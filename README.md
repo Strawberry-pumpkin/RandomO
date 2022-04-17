@@ -6,7 +6,7 @@ Random-O is a website that helps you to live a not-so-ordinary life. You can vis
 <br>
 <br>
 
-**Setting Up**<hr>
+## **Setting Up**<hr>
 
 There are two ways to access the project
 
@@ -36,7 +36,7 @@ Thanks for taking your time to go through my project, hope you enjoy it 💖
 <br>
 <br>
 
-**About**<hr>
+## **About**<hr>
 <br>
 Now let's talk about the website
 <br>
