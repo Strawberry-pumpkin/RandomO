@@ -47,7 +47,11 @@ Random - O consists of three main components
 2) Unbelievable  | Learn how people made their lives less ordinary
 3) Tips & tricks | Some suggestions on how you can make your life less ordinary (and NO! its not an ordinary article)
 
-<br><br>
+<br>
+
+***> Other than that you can contact us through the little message icon and also you can customize your profile picture by clicking on the profile icon***
+
+<br>
 
 **1) Random-tasks**
 <br>
@@ -69,7 +73,4 @@ Random - O consists of three main components
 ![image](https://user-images.githubusercontent.com/103160608/163717720-3c3bac45-0c1f-4692-9d65-0f4bacb28d13.png)
 
 <br>
-
-
-
 
