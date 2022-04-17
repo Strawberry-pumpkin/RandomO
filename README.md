@@ -26,7 +26,7 @@ There are two ways to access the project
 
 4) Finally, copy the three files 'main.py', '_init_.py', 'flask_app.py' tp your project/ working directory **Make Sure you keep them out side the 'static' and 'templates' folder**
 
-_keep in mind that the files 'confid.txt' and 'contact.txt' files are empty as they get filled on user actions, but don't worry it won't affect you at all :)_
+_keep in mind that the files 'confid.txt','users.txt' and 'contact.txt' files are empty as they get filled upon user actions, but don't worry it won't affect you at all :)_
 
 Press the run button and you should be good to go
 
