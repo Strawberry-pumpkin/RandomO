@@ -1,0 +1,22 @@
+/random-tasks
+game
+/random-tasks
+Random-tasks
+/random-tasks
+Play
+/help
+help
+/help
+how to
+/leaderboard
+scores
+/leaderboard
+ranks
+/leaderboard
+leaderboard
+/emulator
+view
+/emulator
+emulator
+/emulator
+change
