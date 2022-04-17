@@ -87,7 +87,6 @@
                 <thead>
                     <tr class="headers" id="headers">
                         <td>Rank</td>
-                        <td></td>
                         <td>Player</td>
                         <td>Score</td>
                         <td>Tasks</td>
@@ -97,7 +96,6 @@
                     {% for row in data_table %}
                     <tr>
                         <td>{{data_table.index(row)+1}}</td>
-                        <td class="prof-img"><img src="static/{{row[0]}}.jpg"></td>
                         <td>{{row[0]}}</td>
                         <td>{{row[1]}}</td>
                         <td>{{row[2]}}</td>
