@@ -1,0 +1,160 @@
+
+/* for random.css */
+ .board{
+     position: relative;
+     top: 15vh;
+     max-width: 680px;
+     margin-left: auto;
+     margin-right: auto;
+     display: block;
+}
+ .board .col{
+     color:red;
+     border: 1px solid white;
+     text-align: center;
+     min-height: 20vh;
+     background-size: cover;
+     padding-top: 10%;
+     background-repeat: no-repeat;
+     border-radius: 5px;
+     margin: 2%;
+     min-width: 40%;
+}
+ .board .col h6{
+     color:black;
+     font-weight: 800;
+     font-size: 1.5rem;
+}
+ .board .col:hover{
+     transition: 1s;
+     transition-delay: -.1s;
+     transform: scale(1.04);
+     border-radius: 10px;
+}
+ @media(max-width:680px){
+     .board .col{
+         min-width:90vw;
+    }
+}
+ .clicko{
+     text-decoration: none;
+}
+ .instructions{
+     position: fixed;
+     top:10vh;
+     display: none;
+     margin-left: 25vw;
+     margin-right: 25vw;
+     padding-top: 5vh;
+     width: 50vw;
+     animation:grow-big 1s;
+     background: rgba(0, 0, 0, 0.2);
+     border-radius: 6px;
+     backdrop-filter: blur(15px);
+     -webkit-backdrop-filter: blur(15px);
+}
+ @keyframes grow-big{
+     0%{
+         transform:scale(0);
+    }
+     100%{
+         transform:scale(1);
+    }
+}
+ .instructions img{
+     margin-left: auto;
+     z-index: 9;
+     margin-right: auto;
+     display: block;
+     max-width: 100%;
+}
+ .instructions a{
+     text-decoration: none;
+     color:red;
+}
+ .instructions p,.instructions h6{
+     font-size:1.2rem;
+     color: white;
+     text-align: center;
+}
+ .instructions .fa-xmark{
+     position: absolute;
+     right:5%;
+     top:5%;
+}
+ .y,.n{
+     margin-left: auto;
+     margin-right: auto;
+     display: block;
+     width:15vw;
+     padding:.1rem;
+     border-radius: 20px;
+     height:5vh;
+}
+ @media(max-width:640px){
+     .y,.n{
+        width:75%;
+    }
+}
+ .board p{
+     color: #fff;
+     text-align: center;
+}
+ .y{
+     color: black;
+     background-color: #0f0;
+}
+ .n{
+     color:black;
+     background-color: red;
+}
+ .y:hover, .n:hover{
+     transform:scale(1.1);
+     transition:.2s;
+}
+ .y i, .n i{
+     color: white;
+}
+ #plus1, #plus2, #plus3{
+     color:white;
+     font-weight: bold;
+     position:relative;
+     display:none;
+     opacity:0;
+     font-size:110%;
+     animation:go-up 5s;
+}
+ @keyframes go-up{
+     0%{
+         top:0vh;
+         opacity:1;
+    }
+     100%{
+         top:-50vh;
+         opacity:0;
+         display:none;
+    }
+}
+ .hide{
+     display:none;
+}
+ .log-alert{
+     position:relative;
+     top:20vh;
+}
+ .log-alert p{
+     color: white;
+     text-align:center;
+}
+ .log-alert a{
+     background-color:rgb(10, 168, 152);
+     color:white;
+     text-decoration:none;
+     padding:1%;
+     border-radius:10px;
+     margin-right:auto;
+     margin-left:auto;
+     display:block;
+     max-width:15vw;
+     text-align:center;
+}
