@@ -21,13 +21,11 @@
     text-align: center;
 }
 .crd{
-    /* position: absolute;
     bottom: -10rem; */
     margin-left: auto;
     margin-right: auto;
     display: block;
     border-radius: 20px;
-    /* border: 2px solid palevioletred; */
     padding: 1rem;
     background-size: cover;
     opacity: .9;
@@ -100,9 +98,7 @@ animation:colors 7s infinite;
         top: 0vh;
         left: 0;
         position: relative;
-        /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(bckd.jpg); */
-
-    }
+   }
 
 .welcome img{
     width: 100%;
