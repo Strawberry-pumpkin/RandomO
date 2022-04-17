@@ -1,0 +1,37 @@
+form{
+     position:relative;
+     top:10vh;
+}
+ .container-sm{
+     margin-top:10vw;
+     max-width:680px;
+}
+ .email, .password{
+     margin-right:auto;
+     margin-left:auto;
+     display:block;
+     width:100%;
+     font-size:1.1rem;
+     border-radius:5px;
+}
+ .email:focus, .password:focus{
+     outline:none;
+}
+ label{
+     color:grey;
+     text-align:center;
+}
+ .submit{
+     border-radius:10px;
+     width:20vw;
+     margin-left:auto;
+     margin-right:auto;
+     display:block;
+     background-color: rgb(10, 168, 152);
+}
+ a{
+     color:rgb(10, 168, 152);
+}
+ a:hover{
+     color:blue;
+}
