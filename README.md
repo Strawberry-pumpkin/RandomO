@@ -36,9 +36,9 @@ _keep in mind that the files 'confid.txt','users.txt' and 'contact.txt' files ar
 
 PS: You can download all the files in one go by clicking the green color "Code" button and downloading the zip file 😉 (You'll have to extract it before use)
 <br>
-<br>
+<br><hr>
 
-## **About**<hr>
+## **About**
 <br>
 Now let's talk about the website
 <br>
