@@ -1,0 +1,188 @@
+.col{
+
+    position: relative;
+    top:0vh;
+
+    min-width: 300px;
+}
+@media(min-width:840px){
+    .col{
+        top:0vh;
+    }
+}
+.crd h6{
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.crd p{
+    color: #fff;
+    text-align: center;
+}
+.crd{
+    bottom: -10rem; */
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 20px;
+    padding: 1rem;
+    background-size: cover;
+    opacity: .9;
+    position:relative;
+    background-image: url(bckd.jpg);
+    border: 2px solid  linear-gradient(purple,palevioletred, wheat);
+}
+.col .crd:hover{
+    opacity: 1;
+    transition: 1s;
+    transform:scale(1.025);
+}
+.redirect{
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 30%;
+    display: block;
+    border-radius: 20px;
+    padding: 1%;
+    background-color: #fff;
+}
+
+.redirect:hover{
+    color: black;
+    opacity: 1;
+}
+.fun{
+    font-weight:bold;
+}
+.fun:hover{
+animation:colors 7s infinite;
+}
+@keyframes colors{
+    0%{
+        color:red;
+    }
+    14%{
+        color:orange;
+    }
+    28%{
+        color:yellow;
+    }
+    42%{
+        color:green;
+    }
+    56%{
+        color:blue;
+    }
+    70%{
+        color:indigo;
+    }
+    84%{
+        color:purple;
+    }
+    100%{
+        color:white;
+    }
+}
+
+.useless{
+        visibility:hidden;
+
+    }
+    .welcome{
+        min-width: 100%;
+        min-height:   90vh;
+        top: 0vh;
+        left: 0;
+        position: relative;
+   }
+
+.welcome img{
+    width: 100%;
+    margin-top: 10vh;
+}
+.welcome img:hover{
+    transform:rotateX(20deg);
+    transition:1s ease;
+}
+.welcome video{
+    width:95vw;
+       margin-top:10vh;
+       margin-right:auto;
+       margin-left:auto;
+       display:block;
+       border-radius:20px;
+}
+.welcome span{
+    font-weight: bold;
+
+}
+.welcome p{
+    padding: 2%;
+    font-size: 1.25rem;
+    color: white;
+    text-align: center;
+    width: auto;
+}
+@media (min-width:840px){
+.welcome img, .welcome video{
+    margin-top: 10vh;
+    max-width: 50vw;
+    margin-left: auto;
+    margin-right: 0%;
+    display: block;
+
+}
+.welcome p{
+
+    max-width: 40vw;
+    position: absolute;
+    top: 15vh;
+    }
+}
+@media(min-width:1080px){
+    .welcome p{
+        top:5vh;
+        padding: 5%;
+        text-align: center;
+    }
+
+}
+a{
+    color: rgb(10, 168, 152);
+    text-decoration: none;
+}
+
+.welcome-opposite img{
+    margin-left:0;
+    margin-right:30vw;
+    max-width:50vw;
+}
+.welcome-opposite p{
+    position:relative;
+    left:50vw;
+    top:-50vh;
+    color:white;
+    max-width:40vw;
+    text-align:center;
+    font-size:1.25rem;
+    padding:5%;
+}
+
+@media (max-width:840px){
+    .welcome-opposite img{
+        max-width:100%;
+        margin:0;
+    }
+    .welcome-opposite p{
+        position:relative;
+        top:0;
+        left:0;
+        max-width:100%;
+    }
+
+
+}

@@ -1,0 +1,57 @@
+ .hover-reveal{
+     height: 20vh;
+     filter:blur(5px);
+     width:12.5vw;
+}
+ .hover-reveal:hover{
+     background-color: transparent;
+     transition: .5s;
+     filter:blur(0);
+}
+ @media (max-width:1080px){
+     .hover-reveal{
+         width:20vw;
+    }
+}
+ .backdrop{
+     max-width:680px;
+     max-height:75vh;
+     margin-right: auto;
+     margin-left: auto;
+     display:block;
+}
+ .desc{
+     display:none;
+     position: relative;
+     top:-12.5vh;
+     left:12vw;
+     background-color: #0aa898;
+     font-weight:400%;
+     z-index:8;
+     text-align: center;
+     color:white;
+     padding:1%;
+     animation:.5s widen;
+     border-radius:10px;
+}
+ .col-3:hover > .desc{
+     display:block;
+     transition: 1s;
+     transition-delay: .2s;
+}
+ .emulator{
+     max-width:840px;
+     margin-right: auto;
+     margin-left: auto;
+     display:block;
+}
+ @keyframes widen{
+     0%{
+         width:0;
+         opacity:0;
+    }
+     100%{
+         width:100%;
+         opacity:1;
+    }
+}
