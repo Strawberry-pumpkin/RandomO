@@ -15,7 +15,7 @@ from os.path import exists
 from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
 
-UPLOAD_FOLDER = "/home/RandomO/mysite/profile-pics"
+UPLOAD_FOLDER = "/profile-pics"
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 
 
@@ -43,7 +43,7 @@ def home():
             return redirect(request.url)
         if file and allowed_file(file.filename):
 
-            with open("/home/RandomO/mysite/static/users.txt", "r") as us:
+            with open("/static/users.txt", "r") as us:
                 users = us.read().splitlines()
                 if session.get("username") in users:
 
@@ -56,14 +56,14 @@ def home():
 
     profile_picture = ""
     if "username" in session:
-        if exists(f'/home/RandomO/mysite/profile-pics/{session.get("username")}.jpg'):
+        if exists(f'/profile-pics/{session.get("username")}.jpg'):
             profile_picture = session.get("username") + ".jpg"
 
-        elif exists(f'/home/RandomO/mysite/profile-pics/{session.get("username")}.png'):
+        elif exists(f'/profile-pics/{session.get("username")}.png'):
             profile_picture = session.get("username") + ".png"
 
         elif exists(
-            f'/home/RandomO/mysite/profile-pics/{session.get("username")}.jpeg'
+            f'/profile-pics/{session.get("username")}.jpeg'
         ):
             profile_picture = session.get("username") + ".jpeg"
         elif "guest" in session.get("username").lower():
@@ -75,7 +75,7 @@ def home():
     if request.method == "GET":
         query = request.args.get("search")
         if query != "" and query is not None:
-            with open("/home/RandomO/mysite/static/keywords.txt", "r") as keys:
+            with open("static/keywords.txt", "r") as keys:
                 keywords = keys.read().splitlines()
                 for i in keywords:
                     if i in query:
@@ -88,7 +88,7 @@ def home():
     if "username" in session:
         log_status = "ogout"  # "L" is not included bcz it's in the HTML file
 
-        with open("/home/RandomO/mysite/static/users.txt", "r+") as us:
+        with open("/static/users.txt", "r+") as us:
             users = us.read().splitlines()
             for i in range(0, len(users), 3):
                 alld.append((users[i], int(users[i + 1]), users[i + 2]))
@@ -109,7 +109,7 @@ def home():
         contact_email = request.form.get("contact_sender")
         description = request.form.get("description")
         if contact_email != None and description != None:
-            with open("/home/RandomO/mysite/static/contact.txt", "r+") as cnt:
+            with open("/static/contact.txt", "r+") as cnt:
                 contact = cnt.read().splitlines()
                 contact.append(contact_email + "\n")
                 contact.append(description + "\n")
@@ -130,7 +130,7 @@ def random_tasks():
         add = request.form.get("add")
         user = request.form.get("username")
         count = request.form.get("count")
-        with open("/home/RandomO/mysite/static/users.txt", "r+") as us:
+        with open("/static/users.txt", "r+") as us:
             all_users = us.read().splitlines()
             user_index = all_users.index(user)
             all_users[user_index + 1] = str(int(all_users[user_index + 1]) + int(add))
@@ -149,7 +149,7 @@ def random_tasks():
             return redirect(request.url)
         if file and allowed_file(file.filename):
 
-            with open("/home/RandomO/mysite/static/users.txt", "r") as us:
+            with open("/static/users.txt", "r") as us:
                 users = us.read().splitlines()
                 if session.get("username") in users:
 
@@ -162,14 +162,14 @@ def random_tasks():
 
     profile_picture = ""
     if "username" in session:
-        if exists(f'/home/RandomO/mysite/profile-pics/{session.get("username")}.jpg'):
+        if exists(f'/profile-pics/{session.get("username")}.jpg'):
             profile_picture = session.get("username") + ".jpg"
 
-        elif exists(f'/home/RandomO/mysite/profile-pics/{session.get("username")}.png'):
+        elif exists(f'/profile-pics/{session.get("username")}.png'):
             profile_picture = session.get("username") + ".png"
 
         elif exists(
-            f'/home/RandomO/mysite/profile-pics/{session.get("username")}.jpeg'):
+            f'/profile-pics/{session.get("username")}.jpeg'):
             profile_picture = session.get("username") + ".jpeg"
         elif "guest" in session.get("username").lower():
             profile_picture = "guest.png"
@@ -181,7 +181,7 @@ def random_tasks():
     if "username" in session:
         log_status = "ogout"  # "L" is not included bcz it's in the HTML file
 
-        with open("/home/RandomO/mysite/static/users.txt", "r+") as us:
+        with open("/static/users.txt", "r+") as us:
             users = us.read().splitlines()
             for i in range(0, len(users), 3):
                 alld.append((users[i], int(users[i + 1]), users[i + 2]))
@@ -200,7 +200,7 @@ def random_tasks():
     task1 = []
     task2 = []
     task3 = []
-    with open("/home/RandomO/mysite/static/tasks.txt", "r") as ts:
+    with open("/static/tasks.txt", "r") as ts:
         tasks = ts.read().splitlines()
         r1,r2,r3 = 0,0,0
         while r1 == r2 or r1==r3 or r2==r3:
@@ -223,7 +223,7 @@ def random_tasks():
         contact_email = request.form.get("contact_sender")
         description = request.form.get("description")
         if contact_email != None and description != None:
-            with open("/home/RandomO/mysite/static/contact.txt", "r+") as cnt:
+            with open("/static/contact.txt", "r+") as cnt:
                 contact = cnt.read().splitlines()
                 contact.append(contact_email + "\n")
                 contact.append(description + "\n")
@@ -232,7 +232,7 @@ def random_tasks():
     if request.method == "GET":
         query = request.args.get("search")
         if query != "" and query is not None:
-            with open("/home/RandomO/mysite/static/keywords.txt", "r") as keys:
+            with open("/static/keywords.txt", "r") as keys:
                 keywords = keys.read().splitlines()
                 for i in keywords:
                     if i in query:
@@ -263,7 +263,7 @@ def leaderboard():
             return redirect(request.url)
         if file and allowed_file(file.filename):
 
-            with open("/home/RandomO/mysite/static/users.txt", "r") as us:
+            with open("/static/users.txt", "r") as us:
                 users = us.read().splitlines()
                 if session.get("username") in users:
 
@@ -276,14 +276,14 @@ def leaderboard():
 
     profile_picture = ""
     if "username" in session:
-        if exists(f'/home/RandomO/mysite/profile-pics/{session.get("username")}.jpg'):
+        if exists(f'/profile-pics/{session.get("username")}.jpg'):
             profile_picture = session.get("username") + ".jpg"
 
-        elif exists(f'/home/RandomO/mysite/profile-pics/{session.get("username")}.png'):
+        elif exists(f'/profile-pics/{session.get("username")}.png'):
             profile_picture = session.get("username") + ".png"
 
         elif exists(
-            f'/home/RandomO/mysite/profile-pics/{session.get("username")}.jpeg'
+            f'/profile-pics/{session.get("username")}.jpeg'
         ):
             profile_picture = session.get("username") + ".jpeg"
         elif "guest" in session.get("username").lower():
@@ -297,7 +297,7 @@ def leaderboard():
     if "username" in session:
         log_status = "ogout"  # "L" is not included bcz it's in the HTML file
 
-        with open("/home/RandomO/mysite/static/users.txt", "r+") as us:
+        with open("/static/users.txt", "r+") as us:
             users = us.read().splitlines()
             for i in range(0, len(users), 3):
                 alld.append((users[i], int(users[i + 1]), users[i + 2]))
@@ -318,13 +318,13 @@ def leaderboard():
         contact_email = request.form.get("contact_sender")
         description = request.form.get("description")
         if contact_email != None and description != None:
-            with open("/home/RandomO/mysite/static/contact.txt", "r+") as cnt:
+            with open("/static/contact.txt", "r+") as cnt:
                 contact = cnt.read().splitlines()
                 contact.append(contact_email + "\n")
                 contact.append(description + "\n")
                 cnt.seek(0)
                 cnt.writelines("\n".join(contact))
-    with open("/home/RandomO/mysite/static/users.txt", "r+") as us:
+    with open("/static/users.txt", "r+") as us:
 
         users = us.read().splitlines()
         for i in range(0, len(users), 3):
@@ -333,7 +333,7 @@ def leaderboard():
     if request.method == "GET":
         query = request.args.get("search")
         if query != "" and query is not None:
-            with open("/home/RandomO/mysite/static/keywords.txt", "r") as keys:
+            with open("/static/keywords.txt", "r") as keys:
                 keywords = keys.read().splitlines()
                 for i in keywords:
                     if i in query:
@@ -355,7 +355,7 @@ def login():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
-        with open("/home/RandomO/mysite/static/confid.txt", "r") as log:
+        with open("/static/confid.txt", "r") as log:
             login_details = log.read().splitlines()
             if username in login_details:
                 user_index = login_details.index(username)
@@ -374,7 +374,7 @@ def login():
         contact_email = request.form.get("contact_sender")
         description = request.form.get("description")
         if contact_email != None and description != None:
-            with open("/home/RandomO/mysite/static/contact.txt", "r+") as cnt:
+            with open("/static/contact.txt", "r+") as cnt:
                 contact = cnt.read().splitlines()
                 contact.append(contact_email + "\n")
                 contact.append(description + "\n")
@@ -390,14 +390,14 @@ def sign_up():
         username = request.form["username"]
         password = request.form["password"]
         try:
-            with open("/home/RandomO/mysite/static/confid.txt", "r+") as sh:
+            with open("/static/confid.txt", "r+") as sh:
                 shh = sh.read().splitlines()
                 if username not in shh:
                     shh.append(username)
                     shh.append(generate_password_hash(password))
                     sh.seek(0)
                     sh.writelines("\n".join(shh))
-                    with open('/home/RandomO/mysite/static/users.txt','r+')as us:
+                    with open('/static/users.txt','r+')as us:
                         users = us.read().splitlines()
                         users.append(username)
                         users.append("0")
@@ -418,7 +418,7 @@ def sign_up():
         contact_email = request.form.get("contact_sender")
         description = request.form.get("description")
         if contact_email != None and description != None:
-            with open("/home/RandomO/mysite/static/contact.txt", "r+") as cnt:
+            with open("/static/contact.txt", "r+") as cnt:
                 contact = cnt.read().splitlines()
                 contact.append(contact_email + "\n")
                 contact.append(description + "\n")
@@ -427,7 +427,7 @@ def sign_up():
     if request.method == "GET":
         query = request.args.get("search")
         if query != "" and query is not None:
-            with open("/home/RandomO/mysite/static/keywords.txt", "r") as keys:
+            with open("/static/keywords.txt", "r") as keys:
                 keywords = keys.read().splitlines()
                 for i in keywords:
                     if i in query:
@@ -446,7 +446,7 @@ def success():
         contact_email = request.form.get("contact_sender")
         description = request.form.get("description")
         if contact_email != None and description != None:
-            with open("/home/RandomO/mysite/static/contact.txt", "r+") as cnt:
+            with open("/static/contact.txt", "r+") as cnt:
                 contact = cnt.read().splitlines()
                 contact.append(contact_email + "\n")
                 contact.append(description + "\n")
@@ -455,7 +455,7 @@ def success():
     if request.method == "GET":
         query = request.args.get("search")
         if query != "" and query is not None:
-            with open("/home/RandomO/mysite/static/keywords.txt", "r") as keys:
+            with open("/static/keywords.txt", "r") as keys:
                 keywords = keys.read().splitlines()
                 for i in keywords:
                     if i in query:
@@ -479,13 +479,13 @@ def guest():
         contact_email = request.form.get("contact_sender")
         description = request.form.get("description")
         if contact_email != None and description != None:
-            with open("/home/RandomO/mysite/static/contact.txt", "r+") as cnt:
+            with open("/static/contact.txt", "r+") as cnt:
                 contact = cnt.read().splitlines()
                 contact.append(contact_email + "\n")
                 contact.append(description + "\n")
                 cnt.seek(0)
                 cnt.writelines("\n".join(contact))
-    with open("/home/RandomO/mysite/static/users.txt", "r+") as us:
+    with open("/static/users.txt", "r+") as us:
         users = us.read().splitlines()
         username = "Guest001"
         count = 0
@@ -502,7 +502,7 @@ def guest():
     if request.method == "GET":
         query = request.args.get("search")
         if query != "" and query is not None:
-            with open("/home/RandomO/mysite/static/keywords.txt", "r") as keys:
+            with open("/static/keywords.txt", "r") as keys:
                 keywords = keys.read().splitlines()
                 for i in keywords:
                     if i in query:
@@ -524,7 +524,7 @@ def unbelievable():
             return redirect(request.url)
         if file and allowed_file(file.filename):
 
-            with open("/home/RandomO/mysite/static/users.txt", "r") as us:
+            with open("/static/users.txt", "r") as us:
                 users = us.read().splitlines()
                 if session.get("username") in users:
 
@@ -537,14 +537,14 @@ def unbelievable():
 
     profile_picture = ""
     if "username" in session:
-        if exists(f'/home/RandomO/mysite/profile-pics/{session.get("username")}.jpg'):
+        if exists(f'/profile-pics/{session.get("username")}.jpg'):
             profile_picture = session.get("username") + ".jpg"
 
-        elif exists(f'/home/RandomO/mysite/profile-pics/{session.get("username")}.png'):
+        elif exists(f'/profile-pics/{session.get("username")}.png'):
             profile_picture = session.get("username") + ".png"
 
         elif exists(
-            f'/home/RandomO/mysite/profile-pics/{session.get("username")}.jpeg'
+            f'/profile-pics/{session.get("username")}.jpeg'
         ):
             profile_picture = session.get("username") + ".jpeg"
         elif "guest" in session.get("username").lower():
@@ -557,7 +557,7 @@ def unbelievable():
     if request.method == "GET":
         query = request.args.get("search")
         if query != "" and query is not None:
-            with open("/home/RandomO/mysite/static/keywords.txt", "r") as keys:
+            with open("/static/keywords.txt", "r") as keys:
                 keywords = keys.read().splitlines()
                 for i in keywords:
                     if i in query:
@@ -568,7 +568,7 @@ def unbelievable():
         contact_email = request.form.get("contact_sender")
         description = request.form.get("description")
         if contact_email != None and description != None:
-            with open("/home/RandomO/mysite/static/contact.txt", "r+") as cnt:
+            with open("/static/contact.txt", "r+") as cnt:
                 contact = cnt.read().splitlines()
                 contact.append(contact_email + "\n")
                 contact.append(description + "\n")
@@ -577,7 +577,7 @@ def unbelievable():
 
     if "username" in session:
         log_status = "ogout"  # "L" is not included bcz it's in the HTML
-        with open("/home/RandomO/mysite/static/users.txt", "r+") as us:
+        with open("/static/users.txt", "r+") as us:
             users = us.read().splitlines()
             for i in range(0, len(users), 3):
                 alld.append((users[i], int(users[i + 1]), users[i + 2]))
@@ -612,7 +612,7 @@ def emulator():
             return redirect(request.url)
         if file and allowed_file(file.filename):
 
-            with open("/home/RandomO/mysite/static/users.txt", "r") as us:
+            with open("/static/users.txt", "r") as us:
                 users = us.read().splitlines()
                 if session.get("username") in users:
 
@@ -625,14 +625,14 @@ def emulator():
 
     profile_picture = ""
     if "username" in session:
-        if exists(f'/home/RandomO/mysite/profile-pics/{session.get("username")}.jpg'):
+        if exists(f'/profile-pics/{session.get("username")}.jpg'):
             profile_picture = session.get("username") + ".jpg"
 
-        elif exists(f'/home/RandomO/mysite/profile-pics/{session.get("username")}.png'):
+        elif exists(f'/profile-pics/{session.get("username")}.png'):
             profile_picture = session.get("username") + ".png"
 
         elif exists(
-            f'/home/RandomO/mysite/profile-pics/{session.get("username")}.jpeg'
+            f'/profile-pics/{session.get("username")}.jpeg'
         ):
             profile_picture = session.get("username") + ".jpeg"
         elif "guest" in session.get("username").lower():
@@ -645,7 +645,7 @@ def emulator():
     if request.method == "GET":
         query = request.args.get("search")
         if query != "" and query is not None:
-            with open("/home/RandomO/mysite/static/keywords.txt", "r") as keys:
+            with open("/static/keywords.txt", "r") as keys:
                 keywords = keys.read().splitlines()
                 for i in keywords:
                     if i in query:
@@ -656,7 +656,7 @@ def emulator():
         contact_email = request.form.get("contact_sender")
         description = request.form.get("description")
         if contact_email != None and description != None:
-            with open("/home/RandomO/mysite/static/contact.txt", "r+") as cnt:
+            with open("/static/contact.txt", "r+") as cnt:
                 contact = cnt.read().splitlines()
                 contact.append(contact_email + "\n")
                 contact.append(description + "\n")
@@ -665,7 +665,7 @@ def emulator():
 
     if "username" in session:
         log_status = "ogout"  # "L" is not included bcz it's in the HTML
-        with open("/home/RandomO/mysite/static/users.txt", "r+") as us:
+        with open("/static/users.txt", "r+") as us:
             users = us.read().splitlines()
             for i in range(0, len(users), 3):
                 alld.append((users[i], int(users[i + 1]), users[i + 2]))
