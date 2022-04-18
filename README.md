@@ -5,8 +5,9 @@ Random-O is a website that helps you to live a not-so-ordinary life. You can vis
 3) and some suggestions on how to live a less ordinary life. 😎
 <br>
 <br>
+<hr>
 
-## **Setting Up**<hr>
+## **Setting Up**
 
 There are two ways to access the project
 
