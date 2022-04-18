@@ -202,9 +202,11 @@ def random_tasks():
     task3 = []
     with open("/home/RandomO/mysite/static/tasks.txt", "r") as ts:
         tasks = ts.read().splitlines()
-        r1 = randrange(0, int(len(tasks) / 5)) * 5
-        r2 = randrange(0, int(len(tasks) / 5)) * 5
-        r3 = randrange(0, int(len(tasks) / 5)) * 5
+        r1,r2,r3 = 0,0,0
+        while r1 == r2 or r1==r3 or r2==r3:
+            r1 = randrange(0, int(len(tasks) / 5)) * 5
+            r2 = randrange(0, int(len(tasks) / 5)) * 5
+            r3 = randrange(0, int(len(tasks) / 5)) * 5
         task1.append(
             (tasks[r1], tasks[r1 + 1], tasks[r1 + 2], tasks[r1 + 3], tasks[r1 + 4])
         )
