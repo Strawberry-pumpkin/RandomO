@@ -30,7 +30,9 @@ _keep in mind that the files 'confid.txt','users.txt' and 'contact.txt' files ar
 
 Now all you have to do is open the terminal and type  "flask run" 
 
+<br>
 
+PS: You can download all the files in one go by clicking the green color "Code" button and downloading the zip file 😉 (You'll have to extract it before use)
 <br>
 <br>
 
