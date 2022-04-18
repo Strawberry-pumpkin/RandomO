@@ -22,14 +22,13 @@ There are two ways to access the project
 
 2) Secondly, it'll make everything so easy for you if you use an IDE such as [Pycharm](https://www.jetbrains.com/pycharm/),  [VS Code](https://code.visualstudio.com/) or any other IDE of your choice.
 
-3) After that copy the folders 'static','profile-pics' and 'templates' to your IDE with all the other files. (If you are using pycharm, you might have to make a new project beforehand)
+3) After that copy the folders 'static' and 'templates' to your IDE with all the other files. (If you are using pycharm, you might have to make a new project beforehand)
 
-4) Finally, copy the three files 'main.py', '_init_.py', 'flask_app.py' tp your project/ working directory **Make Sure you keep them out side the 'static' and 'templates' folder**
+4) Finally, copy the 'app.py' tp your project/ working directory **Make Sure you keep them out side the 'static' and 'templates' folders**
 
 _keep in mind that the files 'confid.txt','users.txt' and 'contact.txt' files are empty as they get filled upon user actions, but don't worry it won't affect you at all :)_
 
-Press the run button and you should be good to go
-
+Now all you have to do is open the terminal and type  "flask run" 
 
 Thanks for taking your time to go through my project, hope you enjoy it 💖
 
