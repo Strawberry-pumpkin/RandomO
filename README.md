@@ -28,7 +28,7 @@ There are two ways to access the project
 
 _keep in mind that the files 'confid.txt','users.txt' and 'contact.txt' files are empty as they get filled upon user actions, but don't worry it won't affect you at all :)_
 
-Now all you have to do is open the terminal and type  "flask run" 
+#### Now all you have to do is open the terminal and type  "flask run" 
 
 <br>
 
