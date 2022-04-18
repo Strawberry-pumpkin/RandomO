@@ -125,6 +125,20 @@ def home():
 
 @views.route("/random-tasks", methods=["GET", "POST"])
 def random_tasks():
+    if request.method == "POST":
+
+        add = request.form.get("add")
+        user = request.form.get("username")
+        count = request.form.get("count")
+        with open("/home/RandomO/mysite/static/users.txt", "r+") as us:
+            all_users = us.read().splitlines()
+            user_index = all_users.index(user)
+            all_users[user_index + 1] = str(int(all_users[user_index + 1]) + int(add))
+            all_users[user_index + 2] = str(int(all_users[user_index + 2]) + int(count))
+            us.seek(0)
+            us.writelines("\n".join(all_users))
+
+
     # profile pic upload
     if request.method == "POST":
         if "file" not in request.files:
@@ -155,26 +169,12 @@ def random_tasks():
             profile_picture = session.get("username") + ".png"
 
         elif exists(
-            f'/home/RandomO/mysite/profile-pics/{session.get("username")}.jpeg'
-        ):
+            f'/home/RandomO/mysite/profile-pics/{session.get("username")}.jpeg'):
             profile_picture = session.get("username") + ".jpeg"
         elif "guest" in session.get("username").lower():
             profile_picture = "guest.png"
         else:
             profile_picture = "default.png"
-
-    if request.method == "POST":
-
-        add = request.form["add"]
-        user = request.form["username"]
-        count = request.form["count"]
-        with open("/home/RandomO/mysite/static/users.txt", "r+") as us:
-            all_users = us.read().splitlines()
-            user_index = all_users.index(user)
-            all_users[user_index + 1] = str(int(all_users[user_index + 1]) + int(add))
-            all_users[user_index + 2] = str(int(all_users[user_index + 2]) + int(count))
-            us.seek(0)
-            us.writelines("\n".join(all_users))
 
     player_data = []
     alld = []
