@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="static/unbelievable.css">
+        <link rel="stylesheet" href="static/base.css">
+        <link rel="icon" href="static/logo.png">
+        <script src="static/script.js"></script>
+        <title>Unbelievable | Random - O</title>
+    </head>
+    <body style="background-color: black;">
+        <header>
+            <div class='resp-brn-holder'>
+                <a class="resp-brn" id='resp-brn' href="/">Random - <span class="fun">O</span></a>
+                <i class="fa-solid fa-bars fa-2x" style='--fa-animation-iteration-count:.5' id="respo" onclick="reveal()"></i>  <i class="fa-solid fa-user" id="user" onclick="prof()"></i>
+                <input style='visibility: hidden;' onclick="resp()" type="checkbox" id="resp"><i class="fa-solid fa-magnifying-glass search fa-2x" onclick="search()" id="srch"></i>
+            </div>
+            <form method="get">
+                <input type="text" placeholder="Search for anything" class='srch-bar' value="" name='search' id="srch-bar">
+            </form>
+            <div class="navbr">
+                <ul >
+                    <li class="logo" style="float: left;"><a href="/">Random - <span class="fun">O</span></a>            </li>
+                    <li><a href='/tips'>Tips</a></li>
+                    <li><a href='/unbelievable'>Unbelievable</a></li>
+                    <li><a href='/leaderboard'>Leaderboard</a></li>
+                    <li><a href='/random-tasks'>Random Tasks</a></li>
+                    <li><input style='visibility: hidden;' onclick="resp()" type="checkbox" id="resp"><i class="fa-solid fa-magnifying-glass search fa-2x" onclick="search2()" id="srch2"></i></li>
+                </ul>
+                <i class="fa-solid fa-user" id="user2" onclick="prof()"></i>
+            </div>
+            <div class="profile" id="profile" >
+                {% if log_status == 'ogout' %}
+                <img src="profile-pics/{{profile_picture}}" onclick="change_profile()">
+                <i class='fa-solid fa-camera fa-2x'></i><br>
+                <h6 style="text-align:center;">{{player_data[1]}} &nbsp;</h6>
+                <hr>
+                <p>Rank: {{player_data[0]}}</p>
+                <p>Score: {{player_data[2]}}</p>
+                <p>Tasks: {{player_data[3]}}</p>
+                <form method = "POST" enctype = "multipart/form-data" >
+                    <input type = "file" name = "file" id="file" onchange="submit_profile()"/>
+                    <input type = "submit" id="submit-img" />
+                </form>
+                {% else %}
+                <p style="text-align:center;">Join our community and compete the <strong> less Ordinary way</strong></p>
+                <hr>
+                <a href="/sign-up" class="logout">Sign Up</a><br><br>
+                <a href="/guest" class="logout">Guest Mode</a><br><br>
+                {% endif %}
+                <a class="logout" href="/l{{log_status}}">L{{log_status}}</a>
+            </div>
+        </header>
+        <div class="resp-nav">
+            <ul id="responsive">
+                <li><a href='/random-tasks'>Random Tasks</a></li>
+                <li><a href='/leaderboard'>Leaderboard</a></li>
+                <li><a href='/unbelievable'>Unbelievable</a></li>
+                <li><a href='/tips'>Tips</a></li>
+            </ul>
+        </div>
+        <div class="contact" id="contact">
+            <h5>Get in touch with us</h5>
+            <hr>
+            <form method="post">
+                <input class="text" type='email' placeholder="Your email" name='contact_sender'>
+                <label>We will reach out to you within 1-2 working days</label>
+                <br><br>
+                <textarea class="text" placeholder="What do you want to know?" name='description'></textarea>
+                <label>Feel free to express your self</label><br><br>
+                <button type="submit" class="submit">Submit</button>
+            </form>
+        </div>
+        <div class="contact-btn" >
+            <p>Contact Us</p>
+            <i onclick="contact()" class='fa-solid fa-message fa-2x'></i>
+        </div>
+        <div class="container-sm" style="max-width:1080px">
+            <br><br><br>
+            <p style="color: #fff;text-align: center;font-size:1.25rem;">People Who lived <strong>a little less ordinary</strong></p>
+            <p style="color:#df73ff;text-align: center;font-size: 1.2rem;">Who told you had to live like everyone else in the same boring ordinary way?
+                <br>Here are some people who decided to beat the system<br>
+            </p>
+            <br>
+            <div class="laugh rain" id="laugh">
+                <p style="text-align: center;">
+                    <i class="fa-solid fa-face-grin-squint-tears fa-10x fa-fw" ></i>
+                </p>
+            </div>
+            <div class="surprise rain" id="surprise">
+                <p style="text-align: center;">
+                    <i class="fa-solid fa-face-surprise fa-10x"></i>
+                </p>
+            </div>
+            <div class="neutral rain" id="neutral">
+                <p style="text-align: center;">
+                    <i class="fa-solid fa-face-meh fa-10x"></i>
+                </p>
+            </div>
+            <div class="sad rain" id="sad">
+                <p style="text-align: center;">
+                    <i class="fa-solid fa-face-sad-cry fa-10x"></i>
+                </p>
+            </div>
+            <div class="angry rain" id="angry">
+                <p style="text-align: center;">
+                    <i class="fa-solid fa-face-angry fa-10x"></i>
+                </p>
+            </div>
+            <div class="row">
+                <hr>
+                <h6>1) No shorts in school</h6>
+                <img src="https:/static.boredpanda.com/blog/wp-content/uploads/2018/05/funny-bending-the-rules-clever-workarounds-life-hacks-100-5b0812e9d3902__605.jpg">
+                <div class="reactions">
+                    <i class="fa-solid fa-face-grin-squint-tears fa-2x" onclick="rain('laugh')"></i>
+                    <i class="fa-solid fa-face-surprise fa-2x" onclick="rain('surprise')"></i>
+                    <i class="fa-solid fa-face-meh fa-2x"  onclick="rain('neutral')"></i>
+                    <i class="fa-solid fa-face-sad-cry fa-2x"  onclick="rain('sad')"></i>
+                    <i class="fa-solid fa-face-angry fa-2x"  onclick="rain('angry')"></i>
+                </div>
+                <p><br>Boys Wear Skirts On A Hot Day To School In Protest At Being Told They Were Not allowed
+                    To Wear Shorts<br>
+                </p>
+                <p class="source"><a target="_blank" href="https://www.boredpanda.com/funny-bending-the-rules-clever-workarounds-life-hacks/">Source</a></p>
+            </div>
+            <br>
+            <div class="row">
+                <hr>
+                <h6>2) NO Carrier, No Dogs</h6>
+                <img src="https:/static.boredpanda.com/blog/wp-content/uploads/2018/05/funny-bending-the-rules-clever-workarounds-life-hacks-4-5af3f25ae2cf2__605.jpg">
+                <div class="reactions">
+                    <i class="fa-solid fa-face-grin-squint-tears fa-2x" onclick="rain('laugh')"></i>
+                    <i class="fa-solid fa-face-surprise fa-2x" onclick="rain('surprise')"></i>
+                    <i class="fa-solid fa-face-meh fa-2x"  onclick="rain('neutral')"></i>
+                    <i class="fa-solid fa-face-sad-cry fa-2x"  onclick="rain('sad')"></i>
+                    <i class="fa-solid fa-face-angry fa-2x"  onclick="rain('angry')"></i>
+                </div>
+                <p><br>Dogs Are Not Allowed On NYC Subway Unless They're In A Carrier. So This Happened<br></p>
+                <p class="source"><a target="_blank" href="https://www.boredpanda.com/funny-bending-the-rules-clever-workarounds-life-hacks/">Source</a></p>
+            </div>
+            <br>
+            <div class="row">
+                <hr>
+                <h6>3) No Pumpkins Allowed</h6>
+                <img src="https:/static.boredpanda.com/blog/wp-content/uploads/2018/05/funny-bending-the-rules-clever-workarounds-life-hacks-39-5b07b420098c5__605.jpg">
+                <div class="reactions">
+                    <i class="fa-solid fa-face-grin-squint-tears fa-2x" onclick="rain('laugh')"></i>
+                    <i class="fa-solid fa-face-surprise fa-2x" onclick="rain('surprise')"></i>
+                    <i class="fa-solid fa-face-meh fa-2x"  onclick="rain('neutral')"></i>
+                    <i class="fa-solid fa-face-sad-cry fa-2x"  onclick="rain('sad')"></i>
+                    <i class="fa-solid fa-face-angry fa-2x"  onclick="rain('angry')"></i>
+                </div>
+                <p><br>So There's A Rule Against Pumpkins In My Dorm But It Doesn't Say Anything
+                    About Pineapples<br>
+                </p>
+                <p class="source"><a href="https://www.boredpanda.com/funny-bending-the-rules-clever-workarounds-life-hacks/" target="_blank">Source</a></p>
+            </div>
+            <br>
+            <div class="row">
+                <hr>
+                <h6>4) Clever Boyfriend</h6>
+                <img src="https:/static.boredpanda.com/blog/wp-content/uploads/2018/05/funny-bending-the-rules-clever-workarounds-life-hacks-29-5b06cd81cb271__605.jpg">
+                <div class="reactions">
+                    <i class="fa-solid fa-face-grin-squint-tears fa-2x" onclick="rain('laugh')"></i>
+                    <i class="fa-solid fa-face-surprise fa-2x" onclick="rain('surprise')"></i>
+                    <i class="fa-solid fa-face-meh fa-2x"  onclick="rain('neutral')"></i>
+                    <i class="fa-solid fa-face-sad-cry fa-2x"  onclick="rain('sad')"></i>
+                    <i class="fa-solid fa-face-angry fa-2x"  onclick="rain('angry')"></i>
+                </div>
+                <p><br>
+                    I Told My Boyfriend The New Puppy Wasn't Allowed In The Bed<br>
+                </p>
+                <p class="source"><a href="https://www.boredpanda.com/funny-bending-the-rules-clever-workarounds-life-hacks/" target="_blank">Source</a></p>
+            </div>
+            <br>
+            <div class="row">
+                <hr>
+                <h6>6) Isn't This Green Enough?</h6>
+                <img src="https:/static.boredpanda.com/blog/wp-content/uploads/2018/06/funny-bending-the-rules-clever-workarounds-life-hacks-72-5b14d959d9f7a__605.jpg">
+                <div class="reactions">
+                    <i class="fa-solid fa-face-grin-squint-tears fa-2x" onclick="rain('laugh')"></i>
+                    <i class="fa-solid fa-face-surprise fa-2x" onclick="rain('surprise')"></i>
+                    <i class="fa-solid fa-face-meh fa-2x"  onclick="rain('neutral')"></i>
+                    <i class="fa-solid fa-face-sad-cry fa-2x"  onclick="rain('sad')"></i>
+                    <i class="fa-solid fa-face-angry fa-2x"  onclick="rain('angry')"></i>
+                </div>
+                <p><br>Green Car Parking Only<br></p>
+                <p class="source"><a href="https://www.boredpanda.com/funny-bending-the-rules-clever-workarounds-life-hacks/" target="_blank">Source</a></p>
+            </div>
+            <br>
+            <h5 style="color: #df73ff;text-align: center;font-weight: 600;">Look at the World A Little Less Ordinarily<br><br>Enjoy!!!!</h5>
+            <br>
+            <div class="row">
+                <hr>
+                <h6>7) Not Just A Croissant</h6>
+                <img src="https://www.boredpanda.com/blog/wp-content/uploads/2022/04/With-simple-illustrations-and-imagination-Javier-Perez-gives-another-meaning-to-everyday-objects-New-Pics-6253ea68ae016__700.jpg">
+                <div class="reactions">
+                    <i class="fa-solid fa-face-grin-squint-tears fa-2x" onclick="rain('laugh')"></i>
+                    <i class="fa-solid fa-face-surprise fa-2x" onclick="rain('surprise')"></i>
+                    <i class="fa-solid fa-face-meh fa-2x"  onclick="rain('neutral')"></i>
+                    <i class="fa-solid fa-face-sad-cry fa-2x"  onclick="rain('sad')"></i>
+                    <i class="fa-solid fa-face-angry fa-2x"  onclick="rain('angry')"></i>
+                </div>
+                <p><br>With Simple Illustrations And Imagination, Javier Perez Gives Another Meaning to Everyday Objects<br></p>
+                <p class="source"><a href="https://www.boredpanda.com/using-everyday-objects-to-make-illustrations-cintascotch/" target="_blank">Source</a></p>
+            </div>
+            <br>
+            <div class="row">
+                <hr>
+                <h6>8) Switchie Besties</h6>
+                <img src="https://www.boredpanda.com/blog/wp-content/uploads/2022/04/With-simple-illustrations-and-imagination-Javier-Perez-gives-another-meaning-to-everyday-objects-New-Pics-6253ea70c76d8__700.jpg">
+                <div class="reactions">
+                    <i class="fa-solid fa-face-grin-squint-tears fa-2x" onclick="rain('laugh')"></i>
+                    <i class="fa-solid fa-face-surprise fa-2x" onclick="rain('surprise')"></i>
+                    <i class="fa-solid fa-face-meh fa-2x"  onclick="rain('neutral')"></i>
+                    <i class="fa-solid fa-face-sad-cry fa-2x"  onclick="rain('sad')"></i>
+                    <i class="fa-solid fa-face-angry fa-2x"  onclick="rain('angry')"></i>
+                </div>
+                <p><br>More Than Switches, We're Besties <br></p>
+                <p class="source"><a href="https://www.boredpanda.com/using-everyday-objects-to-make-illustrations-cintascotch/" target="_blank">Source</a></p>
+            </div>
+            <br>
+            <div class="row">
+                <hr>
+                <h6>9) Shhh!! You Saw Nothing </h6>
+                <img src="https://cdn.myportfolio.com/04fb7adb0dee2b2b6e6d9a2d406e8cac/b53bbccf-3627-4685-8646-e12192c7bfd6_rw_1200.jpg?h=35ce705754f81ab6ef2b37727ab491e2">
+                <div class="reactions">
+                    <i class="fa-solid fa-face-grin-squint-tears fa-2x" onclick="rain('laugh')"></i>
+                    <i class="fa-solid fa-face-surprise fa-2x" onclick="rain('surprise')"></i>
+                    <i class="fa-solid fa-face-meh fa-2x"  onclick="rain('neutral')"></i>
+                    <i class="fa-solid fa-face-sad-cry fa-2x"  onclick="rain('sad')"></i>
+                    <i class="fa-solid fa-face-angry fa-2x"  onclick="rain('angry')"></i>
+                </div>
+                <p><br>Woman Hiding Some Dust In a Hole In The CardBoard Wall<br></p>
+                <p class="source"><a href="https://cintascotch.com/instagram-experiments-2021" target="_blank">Source</a></p>
+            </div>
+            <br>
+            <div class="row">
+                <hr>
+                <h6>10) Listen Up</h6>
+                <img src="https://cdn.myportfolio.com/04fb7adb0dee2b2b6e6d9a2d406e8cac/34f89694-0cb6-4ad9-992b-3f7c73d3f1df_rw_1200.jpg?h=d8bec40f0a3702abe2e3507318be2ace">
+                <div class="reactions">
+                    <i class="fa-solid fa-face-grin-squint-tears fa-2x" onclick="rain('laugh')"></i>
+                    <i class="fa-solid fa-face-surprise fa-2x" onclick="rain('surprise')"></i>
+                    <i class="fa-solid fa-face-meh fa-2x"  onclick="rain('neutral')"></i>
+                    <i class="fa-solid fa-face-sad-cry fa-2x"  onclick="rain('sad')"></i>
+                    <i class="fa-solid fa-face-angry fa-2x"  onclick="rain('angry')"></i>
+                </div>
+                <p><br>Don't Be Afraind to Speak For Yourself, Live A Little Less Ordinary<br></p>
+                <p class="source"><a href="https://cintascotch.com/instagram-experiments-2021" target="_blank">Source</a></p>
+            </div>
+            <br>
+            <div class="row">
+                <hr>
+                <h6>11) Sun Glass Violin</h6>
+                <img src="https://cdn.myportfolio.com/04fb7adb0dee2b2b6e6d9a2d406e8cac/6775efca-a4ca-4999-a8dc-11ff5d3e7b53.png?h=8308d11fd12444c83b3fb9eecf720ad9">
+                <div class="reactions">
+                    <i class="fa-solid fa-face-grin-squint-tears fa-2x" onclick="rain('laugh')"></i>
+                    <i class="fa-solid fa-face-surprise fa-2x" onclick="rain('surprise')"></i>
+                    <i class="fa-solid fa-face-meh fa-2x"  onclick="rain('neutral')"></i>
+                    <i class="fa-solid fa-face-sad-cry fa-2x"  onclick="rain('sad')"></i>
+                    <i class="fa-solid fa-face-angry fa-2x"  onclick="rain('angry')"></i>
+                </div>
+                <p><br>Here Me Play My Extraodinary Sunglass Masterpiece!<br></p>
+                <p class="source"><a href="https://cintascotch.com/creative-music" target="_blank">Source</a></p>
+            </div>
+            <br>
+            <hr style="background-color: #fff;">
+            <p  style="opacity:.75;color: lightblue;text-align: center;">Above Content is not owned by <strong>Random - O</strong>, All content were taken from
+                <br><a style="color:aqua ;text-decoration: none;" href='https://www.boredpanda.com/using-everyday-objects-to-make-illustrations-cintascotch/'>https://www.boredpanda.com/using-everyday-objects-to-make-illustrations-cintascotch/</a><br>and<br>
+                <a style="color:aqua;text-decoration: none;" href='https://www.boredpanda.com/funny-bending-the-rules-clever-workarounds-life-hacks/'>https://www.boredpanda.com/funny-bending-the-rules-clever-workarounds-life-hacks/</a>
+                <br>and<br><a style="color:aqua;text-decoration: none;" href="/cintascotch.com">cintascotch.com</a>
+            </p>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/ef2ff0b06d.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    
+    <script>$(function () {
+        $(document).scroll(function () {
+          var $nav = $(".resp-brn");
+          var $nav2 = $(".navbr");
+          $nav.addClass('fix-nav');
+          $nav2.addClass('fix-nav2');
+        });
+        $(document).scrollTop(function(){
+          var $nav = $(".resp-brn");
+          var $nav2 = $(".navbr");
+          if (document.body.scrollTop < 10){
+          $nav.css('background', 'rgba(255, 255, 255, 0.1)');
+          $nav2.css('background', 'rgba(255,255,255,0.1')}
+        });
+        });
+    </script>
+</html>
